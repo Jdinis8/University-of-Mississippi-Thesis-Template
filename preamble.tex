@@ -1,0 +1,41 @@
+% Colors
+\definecolor{missred}{RGB}{207,20,43}
+\definecolor{missblue}{RGB}{20,33,66}
+\definecolor{misspowder}{RGB}{0,107,166}
+\definecolor{missfaulk}{HTML}{F8EDD9}
+\definecolor{missbb}{RGB}{177,221,246}
+
+% Fixing hyperlinks
+\hypersetup{
+	linktoc=all,
+	colorlinks=true,
+	bookmarksopen=true,
+	filecolor=misspowder,
+	linkcolor=missred,
+	urlcolor=misspowder,
+	citecolor=misspowder
+}
+\urlstyle{same}
+
+% Define any custom commands that you want to use.
+\DeclareMathOperator*{\meas}{meas}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\numberwithin{equation}{section}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% To add new fonts. E.g., newtx package adds Times-like fonts
+%\usepackage[ebgaramond]{newtx}
+\setlength\parindent{0.5in}
+
+% Complying with availabity requirements
+\tagpdfsetup{
+  attach-css = false,
+  css-list = {},
+  math/tex/AF = false,
+  math/mathml/AF = false,
+  math/mathml/sources = {}
+}

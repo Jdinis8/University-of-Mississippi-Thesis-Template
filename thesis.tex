@@ -1,0 +1,131 @@
+% Dissertation template and document class for the University of Mississippi
+%
+% Originally adapted for the University of Mississippi by
+% Caroline LaRoche Turnage-Butterbaugh
+%
+% Based on the Princeton University dissertation template and document class
+% Original author: Jeffrey Scott Dwoskin [jdwoskin@princeton.edu](mailto:jdwoskin@princeton.edu)
+% Original source: http://www.math.princeton.edu/graduate/tex/puthesis.html
+%
+% Revised to match the 2026 University of Mississippi requirements by
+% Harrison Roth [hmroth@go.olemiss.edu](mailto:hmroth@go.olemiss.edu)
+%
+% Adapted to DocumentMetadata accessibility requirements and maintained by
+% João D. Álvares [jdlvares@go.olemiss.edu](mailto:jdlvares@go.olemiss.edu)
+%
+% Last updated: July 2026
+% ********************************************************************************
+
+\DocumentMetadata{
+  lang = en-US,
+  pdfstandard = A-2u,
+  tagging = on, % set this to draft if it's taking too long to compile
+  tagging-setup = {
+    attach-css = false,
+    debug/log = none
+  }
+}
+
+\AddToDocumentProperties[document]{copyright}{true}
+\documentclass[12pt,lof,lot,los]{olemissthesis}
+
+%%%% Author & title page info
+
+\title{THE TITLE MUST BE IN ALL CAPS}
+\submitted{May 2026}  % degree conferral date 
+\copyrightyear{2026}  % year in which the copyright is secured by publication of the dissertation.
+\author{Author's Name} % How your name will appear on the Copyright page
+\authorcap{AUTHOR'S NAME} % How your name will appear on the Title page
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Subject Index - you can remove this if you want
+\usepackage{imakeidx}
+\makeindex
+
+% Math packages
+\usepackage{amsmath, amsfonts, amsthm, amssymb, mathtools, mathrsfs, bm, dsfont}
+
+% Graphics
+\usepackage{graphicx, svg, xcolor}
+
+% Utilities
+\usepackage{enumitem, hyperref, url, ulem, verbatim, lipsum}
+
+% Other commands
+\input{preamble}
+
+% Glossary if needed
+\input{glossary}
+
+% Front-matter
+\abstract{\input{abstract}}
+\dedication{\input{dedication}}
+\acknowledgements{\input{acknowledgements}}
+\vita{\input{vita}}
+
+\begin{document}
+
+\makefrontmatter
+\normalem %\normalem makes \emph produce italicized text instead of underlined text
+
+% Use \part when you have completely different topics in your thesis - otherwise stick with \chapter
+\part{THE VERY BEGINNING}
+\include{ch-intro/chapter-intro}
+\include{ch-two/chapter-two}
+
+\part{WHAT COMES AFTER}
+\chapter{Etc. etc.}
+\section{Etc. etc.}
+
+\listofappendices % Adds page w/ "List of Appendices" according to requirements
+\appendix % Adds "Appendix" to title
+\include{ch-appendicies/appendix_a}
+
+% Make the bibliography single spaced
+\singlespacing
+
+% add the Bibliography to the Table of Contents
+\cleardoublepage
+\ifdefined\phantomsection
+  \phantomsection  % makes hyperref recognize this section properly for pdf link
+\else
+\fi
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+
+% include your .bib file. Formatting guidelines require a page that says "Bibliography" and then have the references on the next page.
+\newpage
+\topskip0pt
+\vspace*{\fill}
+\begin{center}\normalfont\normalsize{BIBLIOGRAPHY}\end{center}
+\vspace*{\fill}
+
+\newpage
+\begingroup
+  \def\chapter*#1{}
+\bibliography{thesis}{}
+\bibliographystyle{amsplain}
+\endgroup
+
+% printing the subject index (unnecessary)
+\printindex
+\addcontentsline{toc}{chapter}{INDEX} % adds the hyperref to the index
+
+% add the VITA to the Table of Contents
+\cleardoublepage
+\doublespacing
+\ifdefined\phantomsection
+  \phantomsection  % makes hyperref recognize this section properly for pdf link
+\else
+\fi
+\addcontentsline{toc}{chapter}{VITA}
+\vspace*{.8in} % makes Vita top margin 2"
+\begin{center}
+VITA
+\end{center}
+\vspace{.15in}
+\input{vita}
+
+\end{document}
+
